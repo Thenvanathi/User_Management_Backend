@@ -4,8 +4,8 @@ const jwt = require("jsonwebtoken");
 
 const cookieOptions = {
   httpOnly: true,
-  sameSite: "none",
-  secure: true,
+  sameSite: "strict",
+  secure: false,
   maxAge: 24 * 60 * 60 * 1000, // 1 day
 };
 
@@ -121,8 +121,8 @@ const logout = (req, res) => {
   res
     .clearCookie("token", {
       httpOnly: true,
-      sameSite: "none",
-      secure: true,
+      sameSite: "strict",
+      secure: false,
     })
     .status(200)
     .json({ message: "Logout Successful" });
